@@ -37,3 +37,27 @@ test('invalid GPS and image coordinates are rejected', () => {
   assert.throws(() => Position.withGps(Position.create(), { latitude: 91, longitude: 120, accuracy: 10 }, Date.now()));
   assert.throws(() => Position.withIndoor(Position.create(), { floor: '4', x: -1, y: 50, source: 'manual' }));
 });
+
+test('confirming a different building cannot retain an old indoor room point', () => {
+  const indoor = Position.withIndoor(Position.create(), { building: 'C', floor: '4',
+    x: 15, y: 61, source: 'qr', updatedAt: 1700000000000 });
+  const campus = Position.withCampus(indoor, { building: 'LIBRARY', entrance: 'LIBRARY-EAST' });
+  assert.equal(campus.building, 'LIBRARY');
+  assert.equal(campus.entrance, 'LIBRARY-EAST');
+  assert.equal(Position.hasIndoor(campus), false);
+});
+
+test('indoor fix priority is provider, QR, known place, then manual', () => {
+  const base = Position.withIndoor(Position.create(), { floor: '4', x: 10, y: 20,
+    source: 'manual', updatedAt: 1700000000000 });
+  const qr = Position.withIndoor(base, { floor: '4', x: 15, y: 61,
+    source: 'qr', navigationNode: 'l16_61', anchorId: 'C-F4-WEST-STAIR',
+    updatedAt: 1700000001000 });
+  assert.equal(qr.indoorSource, 'qr');
+  assert.equal(Position.withIndoor(qr, { floor: '4', x: 40, y: 50,
+    source: 'known', updatedAt: 1700000002000 }), qr);
+  const provider = Position.withIndoor(qr, { floor: '4', x: 16, y: 62,
+    source: 'indoor', updatedAt: 1700000003000 });
+  assert.equal(provider.indoorSource, 'indoor');
+  assert.equal(provider.x, 16);
+});

@@ -18,6 +18,8 @@
     .workspace{width:100%;max-width:1800px;margin:0 auto;padding:clamp(16px,2.3vw,34px);flex:1}
     .heading{display:flex;align-items:end;justify-content:space-between;gap:20px;margin-bottom:18px;flex-wrap:wrap}
     .heading h1{font-size:clamp(1.5rem,2.6vw,2.25rem);line-height:1.2;margin:0 0 6px;letter-spacing:-.035em}.heading p{margin:0;color:#5b6c84;font-size:.92rem}
+    .mode-switch{display:flex;gap:8px;margin:0 0 12px}.mode-switch button{border:1px solid #aac0df;border-radius:9px;background:#fff;color:#24496f;padding:9px 13px;font-size:.84rem;font-weight:800}.mode-switch button.active{background:#173b72;color:#fff;border-color:#173b72}
+    .campus-section{background:#fff;border:1px solid #bdcde1;border-radius:18px;overflow:hidden;box-shadow:0 18px 38px #22426020}.campus-section[hidden],.map-frame[hidden]{display:none}.campus-header{padding:15px 17px;display:flex;align-items:start;justify-content:space-between;gap:12px;flex-wrap:wrap}.campus-header h2{font-size:1.06rem;margin:0 0 5px}.campus-header p{margin:0;color:#647994;font-size:.8rem}.campus-actions{display:flex;gap:7px;flex-wrap:wrap}.campus-actions button,.place-card button,.arrival-prompt button{border:1px solid #a9c1e1;border-radius:8px;background:#edf4ff;color:#19477a;padding:8px 10px;font-size:.78rem;font-weight:800}.campus-actions button.primary,.place-card button.primary{background:#1764c4;color:#fff;border-color:#1764c4}.campus-actions button:disabled,.place-card button:disabled{opacity:.55;cursor:not-allowed}.campus-map{height:min(62vh,610px);min-height:360px;background:#e9f1fa;position:relative}.campus-map:empty::before{content:'校园地图等待高德服务配置';position:absolute;inset:0;display:grid;place-items:center;color:#5c7292;font-weight:800}.campus-status{padding:11px 17px;background:#eef5ff;color:#31557e;font-size:.82rem;line-height:1.45}.campus-status.error{background:#fff0e8;color:#9a4b24}.campus-places{padding:13px 17px;display:flex;gap:10px;flex-wrap:wrap}.place-card{border:1px solid #d0ddeb;border-radius:10px;padding:11px;min-width:min(100%,240px);background:#f9fbff}.place-card strong{display:block}.place-card small{display:block;margin:5px 0 10px;color:#627894}.arrival-prompt{margin:0 17px 15px;padding:10px;border:1px solid #aad5b3;background:#edf9ef;border-radius:9px;color:#23643b;font-size:.8rem}.arrival-prompt[hidden]{display:none}
     .search-wrap{position:relative;width:min(100%,340px)}.search-box{display:flex;align-items:center;gap:10px;padding:10px 13px;background:#fff;border:1px solid #cbd9e9;border-radius:13px;box-shadow:0 4px 14px #273f6210}.search-box:focus-within{border-color:#4276d8;box-shadow:0 0 0 4px #4276d824}.search-icon{font-size:1.2rem;color:#4c6b9e}.search-box input{border:0;outline:0;width:100%;min-width:0;background:transparent;color:#14243b}.search-box input::placeholder{color:#8090a6}
     .suggestions{position:absolute;top:calc(100% + 6px);left:0;right:0;background:#fff;border:1px solid #cedbe9;border-radius:12px;box-shadow:0 18px 38px #15294728;z-index:8;max-height:245px;overflow:auto;padding:5px}.suggestions[hidden]{display:none}.suggestions button{width:100%;border:0;background:transparent;border-radius:8px;padding:9px 11px;text-align:left;color:#193654;display:flex;justify-content:space-between;gap:10px}.suggestions button:hover,.suggestions button:focus-visible{background:#eaf2ff;outline:0}.suggestions small{color:#71819b}
     .map-frame{position:relative;background:#dce6f4;border:1px solid #bdcde1;border-radius:18px;overflow:hidden;box-shadow:0 18px 38px #22426020}
@@ -32,6 +34,8 @@
     .map-prompt{position:absolute;left:50%;bottom:22px;transform:translateX(-50%);z-index:8;display:flex;align-items:center;gap:10px;width:max-content;max-width:calc(100% - 24px);padding:10px 12px;border-radius:12px;background:#173b72;color:#fff;box-shadow:0 8px 24px #10264665;font-size:.82rem;font-weight:750}.map-prompt[hidden]{display:none}.map-prompt button{flex:none;border:1px solid #a9c3e8;border-radius:7px;background:#fff;color:#173b72;padding:5px 8px;font-size:.76rem;font-weight:800}
     .position-summary{position:absolute;left:18px;bottom:17px;z-index:6;max-width:min(360px,calc(100% - 36px));display:flex;align-items:center;gap:9px;background:#fff;border:1px solid #aac6e9;border-radius:12px;padding:9px 11px;box-shadow:0 8px 24px #16365b44;color:#214a7e;font-size:.77rem}.position-summary>span:nth-child(2){min-width:0}.position-summary strong{display:block;font-size:.83rem}.position-summary small{display:block;color:#61768e;margin-top:2px}.position-summary button{flex:none;border:1px solid #91b6e5;border-radius:7px;background:#eaf3ff;color:#174879;padding:6px 8px;font-size:.72rem;font-weight:800}.position-summary.error{border-color:#e2aa8c;color:#9d4a26}.position-summary[hidden]{display:none}
     .location-card{position:absolute;left:18px;top:82px;width:min(320px,calc(100% - 36px));background:#fff;border:1px solid #c8d7e8;border-radius:15px;z-index:7;box-shadow:0 20px 50px #162e4e48;padding:18px}.location-card[hidden]{display:none}.location-card h2{font-size:1.08rem;margin:2px 0 0;color:#173b72}.location-card .status{font-size:.82rem;color:#345579;margin:13px 0 8px;font-weight:800}.location-card .status.error{color:#a4472c}.geo-readout{display:grid;grid-template-columns:1fr auto;gap:6px 10px;font-size:.78rem;color:#526783;background:#f3f7fd;padding:10px;border-radius:9px;margin-bottom:10px}.geo-readout strong{font-size:.78rem;color:#213c5f;font-variant-numeric:tabular-nums;text-align:right}.location-actions{display:flex;gap:7px;flex-wrap:wrap}.location-actions button{border:1px solid #a8c0e0;background:#edf4ff;color:#1b4b83;padding:8px 10px;border-radius:8px;font-size:.77rem;font-weight:800}.location-actions button:hover,.location-actions button:focus-visible{background:#dceaff;outline:2px solid #80aaf0}.location-actions button.primary{background:#173b72;color:#fff;border-color:#173b72}.location-actions button.primary:hover{background:#2458a0}.location-card .hint{font-size:.76rem;line-height:1.5;color:#667992;margin:10px 0 0}.location-card .manual-status{font-size:.78rem;color:#96570c;font-weight:750;margin:10px 0 0}
+    .geo-diagnostics{border-top:1px solid #e2eaf5;margin-top:12px;padding-top:10px;font-size:.73rem;color:#526783}.geo-diagnostics summary{cursor:pointer;font-weight:800;color:#315b8e}.geo-diagnostics dl{display:grid;grid-template-columns:1fr auto;gap:5px 8px;margin:8px 0 0}.geo-diagnostics dd{margin:0;text-align:right;font-weight:700}.geo-diagnostics .advice{margin:9px 0 0;color:#995028;line-height:1.45}
+    .known-picker{display:flex;gap:6px;margin-top:9px}.known-picker select{min-width:0;flex:1;border:1px solid #adc3dd;border-radius:8px;background:#fff;color:#254364;padding:7px;font-size:.76rem}.known-picker button{border:1px solid #a8c0e0;background:#edf4ff;color:#1b4b83;border-radius:8px;padding:7px;font-size:.76rem;font-weight:800}.anchor-notice{padding:9px 15px;background:#fff2e5;color:#945326;font-size:.8rem}.anchor-notice[hidden]{display:none}
     .detail{position:absolute;right:18px;top:82px;width:min(325px,calc(100% - 36px));background:#fff;border:1px solid #c8d7e8;border-radius:15px;z-index:6;box-shadow:0 20px 50px #162e4e48;padding:20px;animation:rise .2s ease}.detail[hidden]{display:none}@keyframes rise{from{opacity:0;transform:translateY(9px)}to{opacity:1;transform:translateY(0)}}.detail-top{display:flex;align-items:start;justify-content:space-between;gap:8px}.detail-kicker{font-size:.76rem;color:#58729a;font-weight:800;letter-spacing:.08em}.detail h2{font-size:1.75rem;line-height:1.25;margin:4px 0 0;color:#12315a}.close{border:0;background:#edf3fb;color:#385578;width:31px;height:31px;border-radius:8px;font-size:1.3rem;line-height:1}.close:hover,.close:focus-visible{background:#dceaff;outline:2px solid #4478d4}.detail-type{display:inline-block;margin:13px 0 14px;background:#e7f0ff;color:#2359a1;border-radius:999px;padding:5px 10px;font-size:.78rem;font-weight:700}.detail-type.office{background:#def8e7;color:#17683b}.detail p{margin:0 0 10px;line-height:1.5;color:#415775;font-size:.87rem}.detail p strong{color:#203b60}.detail-note{border-top:1px solid #e3ebf4;padding-top:12px;color:#657992!important;font-size:.78rem!important;margin-bottom:0!important}
     .footer-note{display:flex;align-items:center;justify-content:space-between;gap:14px;color:#6d7e92;font-size:.78rem;padding:13px 2px;flex-wrap:wrap}.footer-note strong{color:#3c5676}
     @media(max-width:740px){.topbar{padding:12px 16px}.brand-sub{display:none}.floor-tag{font-size:.74rem;padding:6px 9px}.workspace{padding:16px 12px}.heading{align-items:stretch}.heading h1{font-size:1.55rem}.search-wrap{width:100%}.map-bar{padding:9px 11px}.map-hint{display:block;margin:2px 0 0}.legend{display:none}.locate-button{padding:8px 10px}.map-viewport{height:64vh;min-height:440px}.map-canvas{width:calc(2048px * var(--scale))}.location-card{left:12px;top:112px;width:calc(100% - 24px);max-width:360px}.detail{position:fixed;top:auto;right:12px;bottom:12px;width:calc(100% - 24px);max-width:430px;padding:16px;box-shadow:0 15px 60px #10264670}.detail h2{font-size:1.5rem}}
@@ -47,14 +51,17 @@
   <div class="shell">
     <header class="topbar"><div class="brand-mark" aria-hidden="true">C</div><div><div class="brand-title">教学楼教室导览</div><div class="brand-sub">教室与楼梯位置图</div></div><span class="floor-tag">四楼 · 原图示意</span></header>
     <main class="workspace">
-      <div class="heading"><div><h1>找到你的教室</h1><p>搜索教室或点击图上标记，然后开始导航。</p></div><div class="search-wrap"><label class="search-box" for="room-search"><span class="search-icon" aria-hidden="true">⌕</span><input id="room-search" type="search" placeholder="搜索 C、12A、12B 或楼梯" autocomplete="off" aria-label="搜索房间或楼梯"></label><div id="suggestions" class="suggestions" hidden></div></div></div>
-      <section class="map-frame" aria-label="教学楼楼层平面图">
+      <div class="heading"><div><h1>找到你的目的地</h1><p>先在校园地图找到建筑入口，进入楼内后切换四楼路线。</p></div><div class="search-wrap"><label class="search-box" for="room-search"><span class="search-icon" aria-hidden="true">⌕</span><input id="room-search" type="search" placeholder="搜索校园地点、C、12A、12B 或楼梯" autocomplete="off" aria-label="搜索校园地点、房间或楼梯"></label><div id="suggestions" class="suggestions" hidden></div></div></div>
+      <nav class="mode-switch" aria-label="地图模式"><button id="mode-campus" type="button" aria-controls="campus-section">校园地图</button><button id="mode-floor" class="active" type="button" aria-controls="floor-section">C 楼四楼</button></nav>
+      <section id="campus-section" class="campus-section" aria-label="校园室外地图" hidden><div class="campus-header"><div><h2>校园地图</h2><p>蓝点表示设备位置；步行路线终点是已核对的建筑入口。</p><p id="campus-position" role="status">设备位置：正在请求定位…</p></div><div class="campus-actions"><button id="campus-follow" type="button">查看我的蓝点</button><button id="campus-diagnose" type="button">定位诊断</button><button id="campus-enter-floor" class="primary" type="button">查看 C 楼四楼</button></div></div><div id="campus-map" class="campus-map" role="img" aria-label="校园室外地图"></div><div id="campus-status" class="campus-status" role="status">校园地图尚未配置。仍可使用四楼地图与室内导航。</div><div id="campus-places" class="campus-places"></div><div id="arrival-prompt" class="arrival-prompt" hidden>你可能已接近教学楼入口。请在现场确认入口后进入楼层地图；普通 GPS 不能自动判断楼层。 <button id="arrival-enter" type="button">进入 C 楼四楼</button></div></section>
+      <section id="floor-section" class="map-frame" aria-label="教学楼楼层平面图">
         <div class="map-bar"><div><span class="map-label">楼层平面图</span><span class="map-hint">可左右滑动或滚动查看</span></div><div class="map-actions"><div class="legend"><span><i class="swatch"></i>教室</span><span><i class="swatch office"></i>办公室等</span><span><i class="swatch stairs"></i>楼梯</span></div><button id="jump-location" class="jump-button" type="button" aria-label="查看地图上的手动位置" hidden>↗ 图上位置</button><button id="open-location" class="locate-button" type="button" aria-controls="location-card" aria-expanded="false">◎ 我的位置</button><div class="zoom" aria-label="地图缩放"><button id="zoom-out" type="button" aria-label="缩小地图">−</button><output id="zoom-level">80%</output><button id="zoom-in" type="button" aria-label="放大地图">+</button></div></div></div>
+        <div id="anchor-notice" class="anchor-notice" role="status" hidden></div>
         <div id="map-viewport" class="map-viewport" tabindex="0" aria-label="可滚动的楼层图"><div id="map-canvas" class="map-canvas" style="--scale:.8"><img class="floor-image" src="floor-map.jpg" alt="学校教学楼楼层原始平面图，蓝色标出教室，绿色标出办公等房间。" draggable="false"><div id="pins"></div><svg id="route-layer" class="route-layer" viewBox="0 0 2998 1280" preserveAspectRatio="none" aria-label="示意导航路线" hidden><polyline id="route-shadow" class="route-shadow"></polyline><polyline id="route-line" class="route-line"></polyline><circle id="route-start" class="route-point" r="9"></circle><circle id="route-target" class="route-point target-point" r="9"></circle></svg><div id="self-pin" class="self-pin" role="img" aria-label="在楼层图上手动标记的当前位置" hidden><span class="self-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M12 2 3 21l9-4 9 4L12 2Z" fill="currentColor"/></svg></span><span id="self-pin-label">我的位置 · 手动</span></div></div></div>
         <div id="position-summary" class="position-summary" role="status"><span aria-hidden="true">◎</span><span><strong id="position-summary-title">正在请求设备位置…</strong><small id="position-summary-note">楼层图位置可手动确认</small></span><button id="summary-mark" type="button">图上标记</button></div>
         <div id="map-prompt" class="map-prompt" role="status" hidden><span id="map-prompt-text">请点地图上你现在站的位置</span><button id="cancel-mark" type="button">取消</button></div>
         <div id="nav-banner" class="nav-banner" role="status" hidden><span class="nav-banner-text"><strong id="nav-target-name"></strong><small id="nav-route-note">蓝色路线为四楼示意导航</small></span><button id="nav-view-start" type="button">看起点</button><button id="nav-view-target" type="button">看终点</button><button id="nav-stop" class="stop" type="button">结束</button></div>
-        <article id="location-card" class="location-card" hidden aria-label="我的位置"><div class="detail-top"><h2>我的位置</h2><button id="close-location" class="close" type="button" aria-label="关闭位置面板">×</button></div><p id="geo-status" class="status" role="status">正在请求设备位置…</p><div class="geo-readout"><span>经纬度</span><strong id="geo-coords">—</strong><span>估计精度</span><strong id="geo-accuracy">—</strong><span>最后更新时间</span><strong id="geo-time">—</strong></div><div class="location-actions"><button id="toggle-geolocation" class="primary" type="button">停止实时定位</button><button id="mark-location" type="button">在图上手动标记</button><button id="clear-location" type="button" hidden>清除标记</button></div><p id="manual-status" class="manual-status" role="status"></p><p class="hint">页面打开后会自动请求定位权限并持续更新手机坐标、精度和时间。GPS 无法可靠判断楼内位置；请在图上确认位置，或使用未来接入的室内定位。上次手动标记会保留，但不会随 GPS 移动。</p></article>
+        <article id="location-card" class="location-card" hidden aria-label="我的位置"><div class="detail-top"><h2>我的位置</h2><button id="close-location" class="close" type="button" aria-label="关闭位置面板">×</button></div><p id="geo-status" class="status" role="status">正在请求设备位置…</p><div class="geo-readout"><span>经纬度</span><strong id="geo-coords">—</strong><span>估计精度</span><strong id="geo-accuracy">—</strong><span>最后更新时间</span><strong id="geo-time">—</strong></div><div class="location-actions"><button id="toggle-geolocation" class="primary" type="button">停止实时定位</button><button id="mark-location" type="button">在图上手动标记</button><button id="clear-location" type="button" hidden>清除标记</button></div><div class="known-picker"><select id="known-location" aria-label="选择当前所在的已知地点"><option value="">选择当前所在地点…</option></select><button id="use-known-location" type="button">确定</button></div><details id="geo-diagnostics" class="geo-diagnostics"><summary>定位诊断</summary><dl><dt>HTTPS / 安全上下文</dt><dd id="diag-secure">—</dd><dt>浏览器定位接口</dt><dd id="diag-api">—</dd><dt>页面定位策略</dt><dd id="diag-policy">—</dd><dt>网站定位权限</dt><dd id="diag-permission">—</dd><dt>定位状态代码</dt><dd id="diag-code">—</dd><dt>设备类型（推测）</dt><dd id="diag-device">—</dd><dt>当前精度</dt><dd id="diag-accuracy">—</dd></dl><p id="diag-advice" class="advice"></p></details><p id="manual-status" class="manual-status" role="status"></p><p class="hint">页面打开后自动请求定位权限。高精度超时后会尝试普通精度，并持续等待更好的位置。GPS 不代表楼内房间；请使用二维码、已知地点或手动标记确认室内起点。</p></article>
         <article id="detail" class="detail" hidden aria-live="polite"><div class="detail-top"><div><div class="detail-kicker">地点位置</div><h2 id="detail-name"></h2></div><button id="close-detail" class="close" type="button" aria-label="关闭地点信息">×</button></div><span id="detail-type" class="detail-type"></span><p><strong>所在区域：</strong><span id="detail-area"></span></p><p><strong>附近参照：</strong><span id="detail-near"></span></p><p class="detail-note">先在地图上标记你的室内位置；路线依据示意图推断，请以现场通道为准。</p><button id="start-navigation" class="navigate-button" type="button">开始导航到这里</button></article>
       </section>
       <div class="footer-note"><span>已标出 <strong id="room-count">31</strong> 个房间与楼梯位置</span><span>图中编号照原图保留</span></div>
@@ -63,6 +70,12 @@
   <script src="navigation-data.js"></script>
   <script src="navigation.js"></script>
   <script src="location-model.js"></script>
+  <script src="location-service.js"></script>
+  <script src="campus-data.js"></script>
+  <script src="indoor-anchors.js"></script>
+  <script src="campus-config.js"></script>
+  <script src="amap-adapter.js"></script>
+  <script src="hybrid-routing.js"></script>
   <script>
   const rooms=[
     {id:'C120406',x:3.5,y:26.3,area:'左侧教学区 · 上排',near:'紧邻 C120407',kind:'教室'},
@@ -105,78 +118,106 @@
   rooms.forEach(room=>{const button=document.createElement('button');button.type='button';button.className='pin'+(room.kind==='教室'?'':room.kind==='楼梯'?' stairs':' office');button.style.setProperty('--x',room.x+'%');button.style.setProperty('--y',room.y+'%');button.setAttribute('aria-label','查看 '+room.id+' 的位置');button.innerHTML='<span class="pin-face"><span class="pin-dot"></span>'+(room.label||room.id)+'</span>';button.addEventListener('click',()=>{if(!markMode)selectRoom(room,true)});room.button=button;pins.append(button)});
   function selectRoom(room,move){if(selected)selected.button.classList.remove('active');selected=room;room.button.classList.add('active');document.getElementById('detail-name').textContent=room.id;const type=document.getElementById('detail-type');type.textContent=room.kind;type.className='detail-type'+(room.kind==='教室'?'':room.kind==='楼梯'?' stairs':' office');document.getElementById('detail-area').textContent=room.area;document.getElementById('detail-near').textContent=room.near;detail.hidden=false;search.value=room.id;suggestions.hidden=true;if(move){const x=room.x/100*canvas.offsetWidth,y=room.y/100*canvas.offsetHeight;viewport.scrollTo({left:Math.max(0,x-viewport.clientWidth*.5),top:Math.max(0,y-viewport.clientHeight*.55),behavior:'smooth'})}document.dispatchEvent(new CustomEvent('guide:room-selected',{detail:{room}}))}
   const normalizeSearch=value=>value.trim().toUpperCase().replace(/[\s‐‑‒–—·-]/g,'');
-  function renderSuggestions(){const q=normalizeSearch(search.value);if(!q){suggestions.hidden=true;return}const matches=rooms.filter(r=>normalizeSearch(r.id).includes(q)).slice(0,8);suggestions.replaceChildren();for(const room of matches){const b=document.createElement('button');b.type='button';b.innerHTML='<span>'+room.id+'</span><small>'+room.kind+'</small>';b.addEventListener('click',()=>selectRoom(room,true));suggestions.append(b)}if(!matches.length){const p=document.createElement('div');p.style.cssText='padding:10px;color:#6b7d93;font-size:.84rem';p.textContent='没有找到这个房间或楼梯';suggestions.append(p)}suggestions.hidden=false}
-  search.addEventListener('input',renderSuggestions);search.addEventListener('focus',renderSuggestions);search.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();const q=normalizeSearch(search.value);const room=rooms.find(r=>normalizeSearch(r.id)===q)||rooms.find(r=>normalizeSearch(r.id).includes(q));if(room)selectRoom(room,true)}if(e.key==='Escape')suggestions.hidden=true});document.addEventListener('pointerdown',e=>{if(!e.target.closest('.search-wrap'))suggestions.hidden=true});document.getElementById('zoom-in').addEventListener('click',()=>setScale(scale+.15));document.getElementById('zoom-out').addEventListener('click',()=>setScale(scale-.15));document.getElementById('close-detail').addEventListener('click',()=>{detail.hidden=true;if(selected)selected.button.classList.remove('active');selected=null});
+  function renderSuggestions(){
+    const q=normalizeSearch(search.value);if(!q){suggestions.hidden=true;return}
+    const roomMatches=rooms.filter(room=>normalizeSearch(room.id).includes(q)).slice(0,7);
+    const placeMatches=CampusPlaces.search(search.value).slice(0,3);
+    suggestions.replaceChildren();
+    for(const place of placeMatches){
+      const button=document.createElement('button');button.type='button';
+      const name=document.createElement('span'),kind=document.createElement('small');
+      name.textContent=place.name;kind.textContent=CampusPlaces.categories[place.category]||'校园地点';
+      button.append(name,kind);button.addEventListener('click',()=>{suggestions.hidden=true;CampusHybrid.routeToPlace(place)});suggestions.append(button);
+    }
+    for(const room of roomMatches){
+      const button=document.createElement('button');button.type='button';
+      const name=document.createElement('span'),kind=document.createElement('small');
+      name.textContent=room.id;kind.textContent=room.kind;button.append(name,kind);
+      button.addEventListener('click',()=>selectRoom(room,true));suggestions.append(button);
+    }
+    if(!roomMatches.length&&!placeMatches.length){const note=document.createElement('div');note.style.cssText='padding:10px;color:#6b7d93;font-size:.84rem';note.textContent='没有找到这个校园地点或房间';suggestions.append(note)}
+    suggestions.hidden=false;
+  }
+  search.addEventListener('input',renderSuggestions);search.addEventListener('focus',renderSuggestions);
+  search.addEventListener('keydown',event=>{if(event.key==='Enter'){
+    event.preventDefault();const q=normalizeSearch(search.value);
+    const room=rooms.find(item=>normalizeSearch(item.id)===q)||rooms.find(item=>normalizeSearch(item.id).includes(q));
+    if(room)selectRoom(room,true);else{const place=CampusPlaces.search(search.value)[0];if(place)CampusHybrid.routeToPlace(place)}
+  }if(event.key==='Escape')suggestions.hidden=true});
+  document.addEventListener('pointerdown',event=>{if(!event.target.closest('.search-wrap'))suggestions.hidden=true});document.getElementById('zoom-in').addEventListener('click',()=>setScale(scale+.15));document.getElementById('zoom-out').addEventListener('click',()=>setScale(scale-.15));document.getElementById('close-detail').addEventListener('click',()=>{detail.hidden=true;if(selected)selected.button.classList.remove('active');selected=null});
   const locationCard=document.getElementById('location-card'),openLocation=document.getElementById('open-location'),geoButton=document.getElementById('toggle-geolocation'),geoStatus=document.getElementById('geo-status'),manualStatus=document.getElementById('manual-status'),selfPin=document.getElementById('self-pin'),markButton=document.getElementById('mark-location'),clearButton=document.getElementById('clear-location'),jumpButton=document.getElementById('jump-location'),mapPrompt=document.getElementById('map-prompt');
   const positionSummary=document.getElementById('position-summary'),summaryTitle=document.getElementById('position-summary-title'),summaryNote=document.getElementById('position-summary-note');
-  let watchId=null,markMode=false,currentLocation=CampusPosition.create(),gpsState='loading',gpsMessage='正在请求设备位置…',savedIndoorPosition=false;
+  let markMode=false,currentLocation=CampusPosition.create(),gpsState='loading',gpsMessage='正在请求设备位置…',savedIndoorPosition=false;
   const manualPositionKey='campus-floor-guide-manual-position-v1';
   const formatTime=value=>value?new Date(value).toLocaleTimeString('zh-CN',{hour:'2-digit',minute:'2-digit',second:'2-digit'}):'未知';
   function publishLocation(){document.dispatchEvent(new CustomEvent('guide:location-updated',{detail:{location:{...currentLocation}}}))}
   function renderPositionSummary(){
     positionSummary.classList.toggle('error',gpsState==='error');
+    const indoorLabel=CampusPosition.hasIndoor(currentLocation)?savedIndoorPosition?'图上为上次手动位置':({manual:'图上位置已手动确认',known:'图上位置来自已知地点',qr:'图上位置来自二维码',indoor:'图上位置来自室内定位'})[currentLocation.indoorSource]:'楼层图位置待确认';
     if(gpsState==='live'){
       summaryTitle.textContent='我的位置 · GPS 约 '+Math.round(currentLocation.gpsAccuracyMeters)+' 米';
-      summaryNote.textContent='更新 '+formatTime(currentLocation.gpsUpdatedAt)+' · '+(CampusPosition.hasIndoor(currentLocation)?savedIndoorPosition?'图上为上次手动位置':'图上位置已手动确认':'楼层图位置待确认');
+      summaryNote.textContent='更新 '+formatTime(currentLocation.gpsUpdatedAt)+' · '+indoorLabel;
     }else{
       summaryTitle.textContent=gpsMessage;
-      const indoorNote=CampusPosition.hasIndoor(currentLocation)?'图上位置为'+(savedIndoorPosition?'上次':'本次')+'手动标记':'可点击“图上标记”选择室内位置';
+      const indoorNote=CampusPosition.hasIndoor(currentLocation)?indoorLabel:'可点击“图上标记”选择室内位置';
       summaryNote.textContent=(currentLocation.gpsUpdatedAt?'上次 GPS 更新 '+formatTime(currentLocation.gpsUpdatedAt)+' · ':'')+indoorNote;
     }
   }
   function setLocationCard(open){const wasMarking=markMode;locationCard.hidden=!open;openLocation.setAttribute('aria-expanded',String(open));markMode=false;canvas.classList.remove('mark-mode');mapPrompt.hidden=true;markButton.textContent=selfPin.hidden?'在图上手动标记':'重新标记图上位置';if(wasMarking)document.dispatchEvent(new Event('guide:mark-cancelled'))}
-  function stopGeolocation(){
-    if(watchId!==null&&navigator.geolocation)navigator.geolocation.clearWatch(watchId);
-    watchId=null;gpsState='stopped';gpsMessage='实时定位已停止';
-    geoStatus.textContent=gpsMessage+(currentLocation.gpsUpdatedAt?' · 显示上次数据':'');geoStatus.classList.remove('error');
-    geoButton.textContent='重新开启定位';openLocation.classList.remove('live');openLocation.textContent='◎ 我的位置';renderPositionSummary();
+  function renderDiagnostic(state){
+    const set=(id,value)=>{document.getElementById(id).textContent=value};
+    set('diag-secure',state.secureContext?'是':'否');set('diag-api',state.geolocationAvailable?'可用':'不可用');
+    const policy=document.permissionsPolicy||document.featurePolicy;
+    set('diag-policy',policy?.allowsFeature?policy.allowsFeature('geolocation')?'允许':'禁止':'无法查询');
+    set('diag-permission',({granted:'已允许',prompt:'待授权',denied:'已拒绝',unsupported:'浏览器不支持查询'})[state.permission]||'未知');
+    set('diag-code',state.lastError?.code||'—');
+    set('diag-device',navigator.userAgentData?.mobile||/Android|iPhone|iPad/i.test(navigator.userAgent)?'手机/平板':'电脑');
+    set('diag-accuracy',state.accuracyMeters===null?'—':'约 '+Math.round(state.accuracyMeters)+' 米');
+    set('diag-advice',state.lastError?.advice||'若定位不准确，请检查设备定位设置；电脑通常依赖 Wi-Fi/IP，手机在室外更容易获得准确位置。');
+    if(state.lastError||state.phase==='waiting')document.getElementById('geo-diagnostics').open=true;
   }
-  function setGeoError(message){
-    if(watchId!==null&&navigator.geolocation)navigator.geolocation.clearWatch(watchId);
-    watchId=null;gpsState='error';gpsMessage=message;geoStatus.textContent=message;geoStatus.classList.add('error');
-    geoButton.textContent='重试定位';openLocation.classList.remove('live');openLocation.textContent='◎ 定位失败';renderPositionSummary();
+  function onGeoState(state){
+    const titles={requesting:'正在请求设备位置…',waiting:'定位请求没有回应',fallback:'高精度定位暂不可用，正在尝试普通精度',live:'设备位置持续更新中',stopped:'实时定位已停止',error:state.lastError?.message||'定位失败'};
+    gpsState=state.phase==='live'?'live':state.lastError?'error':state.phase;
+    gpsMessage=titles[state.phase]||'正在定位';
+    geoStatus.textContent=gpsMessage;geoStatus.classList.toggle('error',!!state.lastError);
+    geoButton.textContent=locationService.isActive()?'停止实时定位':'重试定位';
+    openLocation.classList.toggle('live',state.phase==='live');openLocation.textContent=state.phase==='live'?'◎ 我的位置':state.lastError?'◎ 定位诊断':state.phase==='stopped'?'◎ 我的位置':'◎ 定位中';
+    renderDiagnostic(state);renderPositionSummary();
+    document.dispatchEvent(new CustomEvent('guide:geo-state',{detail:{state}}));
   }
-  function startGeolocation(){
-    if(watchId!==null)return;
-    if(!navigator.geolocation){setGeoError('当前浏览器不支持定位');return}
-    if(!window.isSecureContext){setGeoError('定位需要 HTTPS 页面');return}
-    gpsState='loading';gpsMessage='正在请求设备位置…';geoStatus.textContent=gpsMessage;geoStatus.classList.remove('error');
-    geoButton.textContent='停止实时定位';openLocation.textContent='◎ 定位中';renderPositionSummary();
-    try{
-      watchId=navigator.geolocation.watchPosition(position=>{
-        try{currentLocation=CampusPosition.withGps(currentLocation,position.coords,position.timestamp)}
-        catch{setGeoError('设备返回的位置数据无效');return}
-        document.getElementById('geo-coords').textContent=currentLocation.latitude.toFixed(5)+', '+currentLocation.longitude.toFixed(5);
-        document.getElementById('geo-accuracy').textContent='约 '+Math.round(currentLocation.gpsAccuracyMeters)+' 米';
-        document.getElementById('geo-time').textContent=formatTime(currentLocation.gpsUpdatedAt);
-        gpsState='live';gpsMessage='设备位置实时更新中';geoStatus.textContent=gpsMessage;geoStatus.classList.remove('error');
-        openLocation.classList.add('live');openLocation.textContent='◎ 我的位置';renderPositionSummary();publishLocation();
-      },error=>{
-        const messages={1:'定位权限被拒绝，请在浏览器设置中允许定位',2:'暂时无法取得设备位置，仍在等待更新',3:'获取位置超时，仍在等待更新'};
-        if(error.code===1)setGeoError(messages[1]);
-        else{gpsState='error';gpsMessage=messages[error.code]||'定位暂时不可用，仍在等待更新';geoStatus.textContent=gpsMessage;geoStatus.classList.add('error');renderPositionSummary()}
-      },{enableHighAccuracy:true,maximumAge:3000,timeout:15000});
-    }catch{setGeoError('定位启动失败，请检查浏览器权限')}
+  function onGeoFix(position){
+    try{currentLocation=CampusPosition.withGps(currentLocation,position.coords,position.timestamp)}
+    catch{geoStatus.textContent='设备返回的位置数据无效';return}
+    document.getElementById('geo-coords').textContent=currentLocation.latitude.toFixed(5)+', '+currentLocation.longitude.toFixed(5);
+    document.getElementById('geo-accuracy').textContent='约 '+Math.round(currentLocation.gpsAccuracyMeters)+' 米';
+    document.getElementById('geo-time').textContent=formatTime(currentLocation.gpsUpdatedAt);
+    renderPositionSummary();publishLocation();
   }
-  openLocation.addEventListener('click',()=>{setLocationCard(locationCard.hidden);if(!locationCard.hidden)detail.hidden=true});document.getElementById('close-location').addEventListener('click',()=>setLocationCard(false));geoButton.addEventListener('click',()=>{if(watchId===null)startGeolocation();else stopGeolocation()});
+  const locationService=CampusLocationService.create({geolocation:navigator.geolocation,permissions:navigator.permissions,secureContext:window.isSecureContext,onState:onGeoState,onFix:onGeoFix});
+  openLocation.addEventListener('click',()=>{setLocationCard(locationCard.hidden);if(!locationCard.hidden)detail.hidden=true});document.getElementById('close-location').addEventListener('click',()=>setLocationCard(false));geoButton.addEventListener('click',()=>{if(locationService.isActive())locationService.stop();else locationService.start()});
   function beginManualMark(){setLocationCard(false);detail.hidden=true;markMode=true;canvas.classList.add('mark-mode');mapPrompt.hidden=false;document.getElementById('map-prompt-text').textContent='请点地图上你现在站的位置';manualStatus.textContent='请点击楼层图上你所在的位置';markButton.textContent='等待选择图上位置…';viewport.focus();document.dispatchEvent(new Event('guide:mark-started'))}
   markButton.addEventListener('click',beginManualMark);document.getElementById('summary-mark').addEventListener('click',beginManualMark);document.getElementById('cancel-mark').addEventListener('click',()=>{markMode=false;canvas.classList.remove('mark-mode');mapPrompt.hidden=true;manualStatus.textContent='已取消标记';markButton.textContent=selfPin.hidden?'在图上手动标记':'重新标记图上位置';document.dispatchEvent(new Event('guide:mark-cancelled'))});jumpButton.addEventListener('click',centerManualPosition);
-  function showIndoorPosition(x,y,{source='manual',accuracyMeters=null,updatedAt=Date.now(),saved=false}={}){
-    currentLocation=CampusPosition.withIndoor(currentLocation,{floor:'4',x,y,source,accuracyMeters,updatedAt});
+  function showIndoorPosition(x,y,{source='manual',building='C',floor='4',navigationNode=null,anchorId=null,accuracyMeters=null,updatedAt=Date.now(),saved=false,force=false}={}){
+    const next=CampusPosition.withIndoor(currentLocation,{building,floor,x,y,source,navigationNode,anchorId,accuracyMeters,updatedAt,force});
+    if(next===currentLocation)return false;
+    currentLocation=next;
     savedIndoorPosition=saved;selfPin.style.left=x+'%';selfPin.style.top=y+'%';selfPin.hidden=false;
-    const label=source==='manual'?(saved?'上次手动位置':'我的位置 · 手动'):'我的位置 · 室内定位';
+    const label=source==='manual'?(saved?'上次手动位置':'我的位置 · 手动'):source==='qr'?'我的位置 · 二维码':source==='known'?'我的位置 · 已知地点':'我的位置 · 室内定位';
     document.getElementById('self-pin-label').textContent=label;selfPin.setAttribute('aria-label',label);
     jumpButton.hidden=false;mapPrompt.hidden=true;markButton.textContent='重新标记图上位置';clearButton.hidden=false;
-    manualStatus.textContent=saved?'图上显示上次手动位置，请确认仍在这里':source==='manual'?'图上位置已手动确认':'图上位置来自室内定位';
+    manualStatus.textContent=saved?'图上显示上次手动位置，请确认仍在这里':source==='manual'?'图上位置已手动确认':source==='qr'?'图上位置来自二维码定位点':source==='known'?'图上位置由你选择的已知地点确定':'图上位置来自室内定位';
     renderPositionSummary();publishLocation();document.dispatchEvent(new CustomEvent('guide:position-set',{detail:{x,y}}));
+    return true;
   }
   function centerManualPosition(){if(selfPin.hidden)return;const x=parseFloat(selfPin.style.left)/100*canvas.offsetWidth,y=parseFloat(selfPin.style.top)/100*canvas.offsetHeight,previous=viewport.style.scrollBehavior;viewport.style.scrollBehavior='auto';viewport.scrollLeft=Math.max(0,x-viewport.clientWidth/2);viewport.scrollTop=Math.max(0,y-viewport.clientHeight/2);viewport.style.scrollBehavior=previous}
   try{const saved=JSON.parse(localStorage.getItem(manualPositionKey));if(saved&&Number.isFinite(saved.x)&&Number.isFinite(saved.y)&&saved.x>=0&&saved.x<=100&&saved.y>=0&&saved.y<=100){showIndoorPosition(saved.x,saved.y,{updatedAt:Number.isFinite(saved.updatedAt)&&saved.updatedAt>0?saved.updatedAt:null,saved:true});requestAnimationFrame(centerManualPosition)}}catch{}
-  canvas.addEventListener('click',event=>{if(!markMode)return;const rect=canvas.getBoundingClientRect(),x=Math.max(0,Math.min(100,(event.clientX-rect.left)/rect.width*100)),y=Math.max(0,Math.min(100,(event.clientY-rect.top)/rect.height*100)),updatedAt=Date.now();showIndoorPosition(x,y,{updatedAt});try{localStorage.setItem(manualPositionKey,JSON.stringify({x,y,updatedAt}))}catch{}markMode=false;canvas.classList.remove('mark-mode');requestAnimationFrame(centerManualPosition)});
-  clearButton.addEventListener('click',()=>{currentLocation=CampusPosition.withoutIndoor(currentLocation);savedIndoorPosition=false;selfPin.hidden=true;jumpButton.hidden=true;markMode=false;canvas.classList.remove('mark-mode');mapPrompt.hidden=true;manualStatus.textContent='图上箭头已清除';markButton.textContent='在图上手动标记';clearButton.hidden=true;try{localStorage.removeItem(manualPositionKey)}catch{}renderPositionSummary();publishLocation();document.dispatchEvent(new Event('guide:position-cleared'))});document.addEventListener('keydown',event=>{if(event.key==='Escape'&&markMode){markMode=false;canvas.classList.remove('mark-mode');mapPrompt.hidden=true;manualStatus.textContent='已取消标记';markButton.textContent=selfPin.hidden?'在图上手动标记':'重新标记图上位置';document.dispatchEvent(new Event('guide:mark-cancelled'))}});window.addEventListener('pagehide',stopGeolocation);
-  window.CampusGuide={getSelectedRoom:()=>selected,getManualPoint:()=>CampusPosition.hasIndoor(currentLocation)?[currentLocation.x,currentLocation.y]:null,getCurrentLocation:()=>({...currentLocation}),setIndoorPosition:fix=>{if(fix.floor!=='4')throw new Error('当前只显示四楼平面图');showIndoorPosition(fix.x,fix.y,{source:'indoor',accuracyMeters:fix.accuracyMeters??null,updatedAt:fix.updatedAt??Date.now()})},beginManualMark,hideDetail:()=>{detail.hidden=true},focusMapPoint:(x,y)=>{viewport.scrollTo({left:Math.max(0,x/100*canvas.offsetWidth-viewport.clientWidth/2),top:Math.max(0,y/100*canvas.offsetHeight-viewport.clientHeight/2),behavior:'smooth'})}};
-  window.addEventListener('load',startGeolocation,{once:true});
+  canvas.addEventListener('click',event=>{if(!markMode)return;const rect=canvas.getBoundingClientRect(),x=Math.max(0,Math.min(100,(event.clientX-rect.left)/rect.width*100)),y=Math.max(0,Math.min(100,(event.clientY-rect.top)/rect.height*100)),updatedAt=Date.now();showIndoorPosition(x,y,{updatedAt,force:true});try{localStorage.setItem(manualPositionKey,JSON.stringify({x,y,updatedAt}))}catch{}markMode=false;canvas.classList.remove('mark-mode');requestAnimationFrame(centerManualPosition)});
+  clearButton.addEventListener('click',()=>{currentLocation=CampusPosition.withoutIndoor(currentLocation);savedIndoorPosition=false;selfPin.hidden=true;jumpButton.hidden=true;markMode=false;canvas.classList.remove('mark-mode');mapPrompt.hidden=true;manualStatus.textContent='图上箭头已清除';markButton.textContent='在图上手动标记';clearButton.hidden=true;try{localStorage.removeItem(manualPositionKey)}catch{}renderPositionSummary();publishLocation();document.dispatchEvent(new Event('guide:position-cleared'))});document.addEventListener('keydown',event=>{if(event.key==='Escape'&&markMode){markMode=false;canvas.classList.remove('mark-mode');mapPrompt.hidden=true;manualStatus.textContent='已取消标记';markButton.textContent=selfPin.hidden?'在图上手动标记':'重新标记图上位置';document.dispatchEvent(new Event('guide:mark-cancelled'))}});window.addEventListener('pagehide',()=>locationService.stop());
+  window.CampusGuide={getSelectedRoom:()=>selected,getRooms:()=>rooms.slice(),findRoom:id=>rooms.find(room=>room.id===id)||null,selectRoomById:id=>{const room=rooms.find(item=>item.id===id);if(room)selectRoom(room,true);return room||null},getManualPoint:()=>CampusPosition.hasIndoor(currentLocation)?[currentLocation.x,currentLocation.y]:null,getCurrentLocation:()=>({...currentLocation}),confirmEntrance:place=>{currentLocation=CampusPosition.withCampus(currentLocation,place);publishLocation()},setIndoorPosition:fix=>{if(fix.floor!=='4'||fix.building!=='C')throw new Error('当前只显示 C 楼四楼平面图');if(fix.navigationNode&&!CampusNavigationData.nodes[fix.navigationNode])throw new Error('未知室内通道节点');return showIndoorPosition(fix.x,fix.y,{source:fix.source||'indoor',building:fix.building,floor:fix.floor,navigationNode:fix.navigationNode||null,anchorId:fix.anchorId||null,accuracyMeters:fix.accuracyMeters??null,updatedAt:fix.updatedAt??Date.now(),force:!!fix.force})},beginManualMark,showLocation:()=>setLocationCard(true),hideDetail:()=>{detail.hidden=true},focusMapPoint:(x,y)=>{viewport.scrollTo({left:Math.max(0,x/100*canvas.offsetWidth-viewport.clientWidth/2),top:Math.max(0,y/100*canvas.offsetHeight-viewport.clientHeight/2),behavior:'smooth'})}};
+  window.addEventListener('load',()=>locationService.start(),{once:true});
   </script>
   <script src="navigation-ui.js"></script>
+  <script src="hybrid-ui.js"></script>
 </body>
 </html>

@@ -36,7 +36,9 @@
     routeLine.setAttribute('points', points);
     setCircle(routeStart, route.points[0]);
     setCircle(routeTarget, route.points.at(-1));
-    routeLayer.setAttribute('aria-label', `从手动标记位置到${room.id}的示意路线`);
+    const source = guide.getCurrentLocation().indoorSource;
+    const sourceLabel = { qr: '二维码定位点', known: '已知地点', indoor: '室内定位点', manual: '手动标记位置' }[source] || '当前起点';
+    routeLayer.setAttribute('aria-label', `从${sourceLabel}到${room.id}的示意路线`);
     routeLayer.removeAttribute('hidden');
   }
 
@@ -51,7 +53,8 @@
     }
     let route;
     try {
-      route = navigator.findRoute(data, start, room.id, [room.x, room.y]);
+      route = navigator.findRoute(data, start, room.id, [room.x, room.y],
+        guide.getCurrentLocation().navigationNode);
     } catch (error) {
       bannerName.textContent = error.message;
       bannerNote.textContent = '请重新标记当前位置';
@@ -78,8 +81,14 @@
     guide.focusMapPoint(start[0], start[1]);
   }
 
-  startButton.addEventListener('click', () => startNavigation(guide.getSelectedRoom()));
-  document.getElementById('nav-stop').addEventListener('click', stopNavigation);
+  startButton.addEventListener('click', () => {
+    const room = guide.getSelectedRoom();
+    const request = new CustomEvent('guide:navigation-requested', { detail: { room }, cancelable: true });
+    if (document.dispatchEvent(request)) startNavigation(room);
+  });
+  document.getElementById('nav-stop').addEventListener('click', () => {
+    stopNavigation(); document.dispatchEvent(new Event('guide:navigation-ended'));
+  });
   document.getElementById('nav-view-start').addEventListener('click', () => {
     const point = guide.getManualPoint();
     if (point) guide.focusMapPoint(point[0], point[1]);
@@ -101,4 +110,5 @@
     else if (activeTarget) startNavigation(activeTarget);
   });
   document.addEventListener('guide:position-cleared', stopNavigation);
+  root.CampusIndoorNavigation = { startNavigation, stopNavigation };
 })(window);

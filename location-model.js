@@ -7,11 +7,13 @@
 })(typeof globalThis !== 'undefined' ? globalThis : this, function () {
   const validPercent = value => Number.isFinite(value) && value >= 0 && value <= 100;
   const validTime = value => Number.isFinite(value) && value > 0;
+  const sourceRank = { manual: 1, known: 2, qr: 3, indoor: 4 };
 
   function create() {
     return {
       type: 'current', latitude: null, longitude: null, gpsAccuracyMeters: null,
-      gpsUpdatedAt: null, floor: null, x: null, y: null,
+      gpsUpdatedAt: null, building: null, entrance: null,
+      floor: null, x: null, y: null, navigationNode: null, anchorId: null,
       indoorSource: null, indoorAccuracyMeters: null, indoorUpdatedAt: null,
       updatedAt: null
     };
@@ -31,15 +33,20 @@
   }
 
   function withIndoor(position, fix) {
-    const { floor, x, y, source, accuracyMeters = null, updatedAt = null } = fix;
+    const { building = 'C', entrance = position.entrance, floor, x, y, source,
+      navigationNode = null, anchorId = null, accuracyMeters = null,
+      updatedAt = null, force = false } = fix;
     if (typeof floor !== 'string' || !floor.trim() || !validPercent(x) || !validPercent(y) ||
-        !['manual', 'indoor'].includes(source) ||
+        typeof building !== 'string' || !building.trim() || !sourceRank[source] ||
+        (navigationNode !== null && typeof navigationNode !== 'string') ||
         (accuracyMeters !== null && (!Number.isFinite(accuracyMeters) || accuracyMeters < 0)) ||
         (updatedAt !== null && !validTime(updatedAt))) {
       throw new Error('无效的楼层图位置数据');
     }
+    if (!force && sourceRank[position.indoorSource] > sourceRank[source]) return position;
     return {
-      ...position, floor, x, y, indoorSource: source,
+      ...position, building, entrance, floor, x, y, navigationNode, anchorId,
+      indoorSource: source,
       indoorAccuracyMeters: accuracyMeters, indoorUpdatedAt: updatedAt,
       updatedAt: Math.max(position.gpsUpdatedAt || 0, updatedAt || 0) || null
     };
@@ -47,12 +54,20 @@
 
   function withoutIndoor(position) {
     return {
-      ...position, floor: null, x: null, y: null, indoorSource: null,
+      ...position, floor: null, x: null, y: null, navigationNode: null,
+      anchorId: null, indoorSource: null,
       indoorAccuracyMeters: null, indoorUpdatedAt: null,
       updatedAt: position.gpsUpdatedAt
     };
   }
 
+  function withCampus(position, { building, entrance = null }) {
+    if (typeof building !== 'string' || !building.trim() ||
+        (entrance !== null && typeof entrance !== 'string')) throw new Error('无效的校园地点');
+    const next = position.building && position.building !== building ? withoutIndoor(position) : position;
+    return { ...next, building, entrance };
+  }
+
   const hasIndoor = position => validPercent(position.x) && validPercent(position.y) && !!position.floor;
-  return { create, withGps, withIndoor, withoutIndoor, hasIndoor };
+  return { create, withGps, withCampus, withIndoor, withoutIndoor, hasIndoor, sourceRank };
 });

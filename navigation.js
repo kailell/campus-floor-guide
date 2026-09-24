@@ -47,13 +47,17 @@
       Math.abs(point[1] - points[index - 1][1]) > 0.00001);
   }
 
-  function findRoute(data, start, targetId, targetPoint) {
+  function findRoute(data, start, targetId, targetPoint, startNode = null) {
     if (!validPoint(start)) throw new Error('请先在楼层图上标记当前位置');
     const destination = data.destinations[targetId];
     if (!destination) throw new Error('这个地点尚未加入导航地图');
     if (targetPoint !== undefined && !validPoint(targetPoint)) throw new Error('目标坐标无效');
+    if (startNode !== null && !data.nodes[startNode]) throw new Error('起点通道节点无效');
 
-    const snap = closestCorridor(data, start);
+    const snap = startNode ? {
+      edge: [startNode], point: data.nodes[startNode],
+      offset: distance(start, data.nodes[startNode], data.image)
+    } : closestCorridor(data, start);
     if (!snap) throw new Error('导航地图中没有可用通道');
     const adjacency = new Map(Object.keys(data.nodes).map(id => [id, []]));
     adjacency.set(startId, []);

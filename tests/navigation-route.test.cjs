@@ -43,3 +43,10 @@ test('invalid start and missing destination return clear errors', () => {
   assert.throws(() => findRoute(data, [-1, 60], 'C120406'), /当前位置/);
   assert.throws(() => findRoute(data, [8, 61], 'unknown'), /尚未加入/);
 });
+
+test('a QR anchor uses its named corridor node as the route start', () => {
+  const route = findRoute(data, [15.7, 61], 'C120406', undefined, 'l16_61');
+  assert.deepEqual(route.snappedStart, data.nodes.l16_61);
+  assert.equal(route.nodeIds[0], 'l16_61');
+  assert.throws(() => findRoute(data, [15.7, 61], 'C120406', undefined, 'missing'));
+});
