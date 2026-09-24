@@ -43,7 +43,7 @@
       if (!active || token !== run) return;
       lastFix = position; lastError = null; clearTimer();
       if (mode === 'high') { clearWatch(lowWatch); lowWatch = null; }
-      report('live', { mode }); onFix(position, mode);
+      onFix(position, mode); report('live', { mode });
     }
     function lowAccuracy(token) {
       if (!active || token !== run || lowWatch !== null) return;
